@@ -4,13 +4,14 @@ var app = express();
 var bodyParser = require('body-parser');
 
 var mysql = require('mysql');
+const dbConfig = require('./config/db.config')
 var dbConn = mysql.createConnection({
-    host: 'us-cdbr-iron-east-04.cleardb.net',
-    user: 'b4b170e8daceb8',
-    password: 'ffda00d5',
-    database: 'heroku_eff46056a22e1a4'
+    host: dbConfig.HOST,
+    user: dbConfig.USER,
+    password: dbConfig.PASSWORD,
+    database: dbConfig.DB
 });
-
+module.exports = dbConn;
 // connect to database
 dbConn.connect();
 
