@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 
 var mysql = require('mysql');
 const dbConfig = require('./config/db.config')
-var dbConn = mysql.createConnection({
+var dbConn = mysql.createPool({
     host: dbConfig.HOST,
     user: dbConfig.USER,
     password: dbConfig.PASSWORD,
