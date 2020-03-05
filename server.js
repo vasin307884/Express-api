@@ -5,10 +5,10 @@ var bodyParser = require('body-parser');
 
 var mysql = require('mysql');
 var dbConn = mysql.createConnection({
-    host: '34.87.119.21',
-    user: 'root',
-    password: 'zPkgxr+9',
-    database: 'chingphaow'
+    host: 'us-cdbr-iron-east-04.cleardb.net',
+    user: 'b4b170e8daceb8',
+    password: 'ffda00d5',
+    database: 'heroku_eff46056a22e1a4'
 });
 
 // connect to database
