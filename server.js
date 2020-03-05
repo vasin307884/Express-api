@@ -13,7 +13,6 @@ var dbConn = mysql.createPool({
 });
 module.exports = dbConn;
 // connect to database
-dbConn.connect();
 
 app.use(cors({origin:true}));
 
