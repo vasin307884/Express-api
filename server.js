@@ -97,7 +97,8 @@ app.delete('/requests/delete', function (req, res) {
 });
 
 // set port
-app.listen(4000, function () {
-    console.log('Node app is running on port 4000');
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, function () {
+    console.log(`Server is running on port ${PORT}.`);
 });
 module.exports = app;
