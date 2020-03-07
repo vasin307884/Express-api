@@ -76,7 +76,7 @@ app.post('/requests/update', function (req, res) {
         return res.status(400).send({ error: usr, message: 'Please provide user and user_id' });
     }
 
-    dbConn.query("UPDATE requests SET statusValue = ?,color = ? WHERE id = ?", [usr.statusValue,usr.color, usr_id.id], function (error, results, fields) {
+    dbConn.query("UPDATE requests SET statusValue = ?,color = ? WHERE id = ?", [usr.statusValue,usr.color, usr_id], function (error, results, fields) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'Request has been updated successfully.' });
     });
