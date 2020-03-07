@@ -95,7 +95,22 @@ app.delete('/requests/delete', function (req, res) {
         return res.send({ error: false, data: results, message: 'User has been updated successfully.' });
     });
 });
-
+app.post('/users',function(req,res,next){
+    var username = req.body.username;
+    var password = req.body.password;
+    dbConn.query("SELECT * FROM users where username= ? AND password= ?",
+    [username,password],function(error,row,fields){
+        if(error){
+            console.log(error);
+            res.send({'Success':false,message:'Could not connect to database'});
+        }
+        if(row.length > 0){
+            res.send({'Success':true,'user':row[0].username});
+        }else {
+            res.send({'Success':false,message:'User not found'})
+        }
+    });
+});
 // set port
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, function () {
