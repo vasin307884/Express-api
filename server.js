@@ -102,12 +102,12 @@ app.post('/users',function(req,res,next){
     [username,password],function(error,row,fields){
         if(error){
             console.log(error);
-            res.send({'Success':false,'message':'Could not connect to database'});
+            res.send({'success':false,'message':'Could not connect to database'});
         }
         if(row.length > 0){
-            res.send({'Success':true,'users':row[0].username});
+            res.send({'success':true,'users':row[0].username});
         }else {
-            res.send({'Success':false,'message':'User not found'})
+            res.send({'success':false,'message':'User not found'})
         }
     });
 });
