@@ -98,16 +98,16 @@ app.delete('/requests/delete', function (req, res) {
 app.post('/users',function(req,res,next){
     var username = req.body.username;
     var password = req.body.password;
-    dbConn.query("SELECT * FROM users where username= ? AND password= ?",
+    dbConn.query("SELECT * FROM users where username = ? AND password = ?",
     [username,password],function(error,row,fields){
         if(error){
             console.log(error);
-            res.send({'Success':false,message:'Could not connect to database'});
+            res.send({'Success':false,'message':'Could not connect to database'});
         }
         if(row.length > 0){
-            res.send({'Success':true,'user':row[0].username});
+            res.send({'Success':true,'users':row[0].username});
         }else {
-            res.send({'Success':false,message:'User not found'})
+            res.send({'Success':false,'message':'User not found'})
         }
     });
 });
