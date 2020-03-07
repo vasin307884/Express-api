@@ -67,7 +67,7 @@ app.post('/requests/add', function (req, res) {
 });
 
 //  Update user with id
-app.put('/requests/update', function (req, res) {
+app.post('/requests/update', function (req, res) {
 
     let usr_id = req.body.id;
     let usr = req.body;
