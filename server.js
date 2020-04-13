@@ -95,22 +95,24 @@ app.delete('/requests/delete', function (req, res) {
         return res.send({ error: false, data: results, message: 'User has been updated successfully.' });
     });
 });
-app.post('/users',function(req,res,next){
+app.post('/staff',function(req,res,next){
     var username = req.body.username;
     var password = req.body.password;
-    dbConn.query("SELECT * FROM users where username = ? AND password = ?",
+    dbConn.query("SELECT * FROM staff where username = ? AND password = ?",
     [username,password],function(error,row,fields){
         if(error){
             console.log(error);
             res.send({'success':false,'message':'Could not connect to database'});
         }
         if(row.length > 0){
-            res.send({'success':true,'users':row[0].username});
+            res.send({'success':true,'staff':row[0].username});
         }else {
             res.send({'success':false,'message':'User not found'})
         }
     });
 });
+var Users = require('./routes/Users')
+app.use('/users', Users)
 // set port
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, function () {
