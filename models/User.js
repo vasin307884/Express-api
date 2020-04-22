@@ -4,7 +4,7 @@ const db = require('../database/db.js')
 module.exports = db.sequelize.define(
   'user',
   {
-    id: {
+    staff_id: {
       type: Sequelize.INTEGER,
       primaryKey: true,
       autoIncrement: true

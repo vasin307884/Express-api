@@ -74,7 +74,7 @@ users.get('/profile', (req, res) => {
 
   User.findOne({
     where: {
-      id: decoded.id
+      staff_id: decoded.staff_id
     }
   })
     .then(user => {

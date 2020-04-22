@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
 
 // Retrieve all users 
 app.get('/requests/', function (req, res) {
-    dbConn.query('SELECT * FROM requests LEFT JOIN users ON requests.staffid = users.id ORDER BY requests.id', function (error, results, fields) {
+    dbConn.query('SELECT * FROM requests LEFT JOIN users ON requests.staffid = users.staff_id ORDER BY requests.id', function (error, results, fields) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'Request list.' });
     });
