@@ -33,7 +33,12 @@ app.get('/requests/', function (req, res) {
         return res.send({ error: false, data: results, message: 'Request list.' });
     });
 });
-
+app.get('/staffs/', function (req, res) {
+    dbConn.query('SELECT * FROM users', function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'Staff data list.' });
+    });
+});
 // Retrieve user with id 
 app.get('/requests/:id', function (req, res) {
 
@@ -95,7 +100,7 @@ app.delete('/requests/delete', function (req, res) {
         return res.send({ error: false, data: results, message: 'User has been updated successfully.' });
     });
 });
-app.post('/staff',function(req,res,next){
+app.post('/staff/login',function(req,res,next){
     var username = req.body.username;
     var password = req.body.password;
     dbConn.query("SELECT * FROM staff where username = ? AND password = ?",
