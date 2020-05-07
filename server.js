@@ -91,13 +91,13 @@ app.put('/requests/update', function (req, res) {
 app.delete('/requests/delete', function (req, res) {
     console.log(req.body)
     let usr_id = req.body.id;
-
+    let stf_id = req.body.staff_id
     if (!usr_id) {
         return res.status(400).send({ error: true, message: 'Please provide user_id' });
     }
-    dbConn.query('DELETE FROM requests WHERE id = ?', [usr_id], function (error, results, fields) {
+    dbConn.query('DELETE FROM requests WHERE id = ?,staff_id = ?', [usr_id,stf_id], function (error, results, fields) {
         if (error) throw error;
-        return res.send({ error: false, data: results, message: 'User has been updated successfully.' });
+        return res.send({ error: false, data: results, message: 'Data has been deleted.' });
     });
 });
 app.post('/staff/login',function(req,res,next){
