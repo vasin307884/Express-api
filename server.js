@@ -95,7 +95,7 @@ app.delete('/requests/delete', function (req, res) {
     if (!usr_id) {
         return res.status(400).send({ error: true, message: 'Please provide user_id' });
     }
-    dbConn.query('DELETE FROM requests WHERE id = ?,staff_id = ?', [usr_id,stf_id], function (error, results, fields) {
+    dbConn.query('DELETE FROM users,requests WHERE id = ?,staff_id = ?', [usr_id,stf_id], function (error, results, fields) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'Data has been deleted.' });
     });
