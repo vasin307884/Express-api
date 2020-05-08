@@ -88,7 +88,7 @@ app.put('/requests/update', function (req, res) {
 });
 
 //  Delete user
-app.delete('/requests/delete', function (req, res) {
+app.delete('/requests/delete/?id=', function (req, res) {
     console.log(req.body)
     let usr_id = req.body.id;
     if (!usr_id) {
