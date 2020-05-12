@@ -39,6 +39,18 @@ app.get('/staffs/', function (req, res) {
         return res.send({ error: false, data: results, message: 'Staff data list.' });
     });
 });
+app.get('/requests/totalArea', function (req, res) {
+    dbConn.query('SELECT SUM(area) AS Total from requests', function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'Total Area' });
+    });
+});
+app.get('/requests/totalSpecific', function (req, res) {
+    dbConn.query('SELECT statusValue,SUM(area) as Totalspecific FROM requests GROUP BY statusValue ', function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'Total Area' });
+    });
+});
 // Retrieve user with id 
 app.get('/requests/:id', function (req, res) {
 
