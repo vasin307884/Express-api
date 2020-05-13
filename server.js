@@ -113,11 +113,11 @@ app.delete('/requests/delete/:id', function (req, res) {
 });
 app.delete('/staff/delete/:id', function (req, res) {
     console.log(req.body)
-    let usr_id = req.params.staff_id;
-    if (!usr_id) {
+    let stf_id = req.params.staff_id;
+    if (!stf_id) {
         return res.status(400).send({ error: true, message: 'Please provide user_id' });
     }
-    dbConn.query('DELETE FROM users WHERE staff_id = ?', usr_id, function (error, results, fields) {
+    dbConn.query('DELETE FROM users WHERE staff_id = ?', stf_id, function (error, results, fields) {
         if (error) throw error;
         return res.send({ error: false, data: results, message: 'Data has been deleted.' });
     });
