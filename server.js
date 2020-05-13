@@ -111,6 +111,17 @@ app.delete('/requests/delete/:id', function (req, res) {
         return res.send({ error: false, data: results, message: 'Data has been deleted.' });
     });
 });
+app.delete('/staff/delete/:id', function (req, res) {
+    console.log(req.body)
+    let usr_id = req.params.staff_id;
+    if (!usr_id) {
+        return res.status(400).send({ error: true, message: 'Please provide user_id' });
+    }
+    dbConn.query('DELETE FROM users WHERE staff_id = ?', usr_id, function (error, results, fields) {
+        if (error) throw error;
+        return res.send({ error: false, data: results, message: 'Data has been deleted.' });
+    });
+});
 app.post('/staff/login',function(req,res,next){
     var username = req.body.username;
     var password = req.body.password;
