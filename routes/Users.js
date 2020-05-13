@@ -12,6 +12,7 @@ process.env.SECRET_KEY = 'secret'
 users.post('/register', (req, res) => {
   const today = new Date()
   const userData = {
+    role : req.body.role,
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     staff_phone : req.body.staff_phone,

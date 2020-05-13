@@ -9,6 +9,9 @@ module.exports = db.sequelize.define(
       primaryKey: true,
       autoIncrement: true
     },
+    role: {
+      type: Sequelize.STRING
+    },
     first_name: {
       type: Sequelize.STRING
     },
